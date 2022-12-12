@@ -22,14 +22,15 @@
                 <ComboBoxItem IsSelected="True" Content="Yogyakarta"/>
                 <ComboBoxItem Content="Sumatera Barat"/>
                 <ComboBoxItem Content="Nusa Tenggara Barat"/>
+                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}"/>
             </ComboBox>
         </StackPanel>
         <Button Content="New" HorizontalAlignment="Left" Padding="5" Width="80px" Margin="100,293,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_add" Content="Add" HorizontalAlignment="Left" Padding="5" Width="80px" Margin="250,293,0,0" VerticalAlignment="Top" Click="btn_add_Click"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Padding="5" Width="80px" Margin="400,293,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update" HorizontalAlignment="Left" Padding="5" Width="80px" Margin="550,293,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_delete" Content="Delete" HorizontalAlignment="Left" Padding="5" Width="80px" Margin="400,293,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button x:Name="btn_update" Content="Update" HorizontalAlignment="Left" Padding="5" Width="80px" Margin="550,293,0,0" VerticalAlignment="Top" Click="btn_update_Click"/>
 
-        <DataGrid Name="dataUsers" Margin="100,339,170,27" AutoGenerateColumns="False">
+        <DataGrid Name="dataUsers" Margin="100,339,170,27" AutoGenerateColumns="False" SelectionChanged="dataUsers_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="First Name" Width="132" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Last Name" Width="132" Binding="{Binding LastName}"/>

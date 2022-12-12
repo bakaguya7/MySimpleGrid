@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,6 @@ namespace MySimpleGrid
             addUsers.LastName = textbox_lname.Text;
             addUsers.BirthOfDate = (DateTime)date_birth.SelectedDate;
             addUsers.City = select_city.Text;
-
             
             dataUsers.Items.Add(addUsers);
         }
@@ -61,6 +61,29 @@ namespace MySimpleGrid
         {
 
         }
+
+        /// delete item
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            dataUsers.Items.RemoveAt(dataUsers.SelectedIndex);
+        }
+
+        private void btn_update_Click(object sender, RoutedEventArgs e)
+        {
+            int index = this.dataUsers.SelectedCells[0].Column.DisplayIndex;
+            textbox_fname.Text = addUsers.GetType().GetProperty("FirstName").GetGetMethod().Invoke(addUsers, null).ToString();
+            textbox_lname.Text = addUsers.GetType().GetProperty("LastName").GetGetMethod().Invoke(addUsers, null).ToString();
+            date_birth.Text = addUsers.GetType().GetProperty("BirthOfDate").GetGetMethod().Invoke(addUsers, null).ToString();
+            select_city.Text = addUsers.GetType().GetProperty("City").GetGetMethod().Invoke(addUsers, null).ToString();
+
+            dataUsers.Items.RemoveAt(dataUsers.SelectedIndex);
+        }
+
+        private void dataUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
     }
 
     public class User
